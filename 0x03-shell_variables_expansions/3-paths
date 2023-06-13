@@ -1,2 +1,6 @@
 #!/bin/bash
-echo $PATH | tr ':' '\n' | wc -1
+IFS=':' read -ra path_dirs <<< "$(echo $PATH | tr -s ':' | sed 's/:$//')"
+
+num_dirs=${#path_dirs[@]}
+
+echo $num_dirs
